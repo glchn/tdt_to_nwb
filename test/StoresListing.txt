@@ -1,0 +1,82 @@
+Experiment: FibPhoTest
+Subject: test
+User: User
+Date: 05/23/2022
+Time: 7:00:32pm
+
+Object ID : RZ10x(1) - RZn Processor
+ Rate     : 6103.5 Hz
+ Store ID : TIG/
+  Source  : Strobe input
+  Invert  : No
+  Offset  : Yes
+  Count   : No
+ Store ID : Tick
+
+Object ID : FibPho1 - Fiber Photometry
+ Store ID : 405A
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : 465A
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : 405B
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : 465B
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : 560B
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : Fi1i
+  Mode    : Single scalar
+  Format  : Float-32
+  Scale   : Unity
+  Pre Cap : 0.00 ms
+ Store ID : Fi1r
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 6103.5 Hz
+
+Object ID : FibPho2 - Fiber Photometry
+ Store ID : 405C
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : 465C
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 1000.0 Hz
+ Store ID : Fi2i
+  Mode    : Single scalar
+  Format  : Float-32
+  Scale   : Unity
+  Pre Cap : 0.00 ms
+ Store ID : Fi2r
+  Format  : Float-32
+  Scale   : Unity
+  Rate    : 6103.5 Hz
+
+
+Flat Listing:
+StoreID  Gizmo/Hal
+405A     FibPho1
+405B     FibPho1
+405C     FibPho2
+465A     FibPho1
+465B     FibPho1
+465C     FibPho2
+560B     FibPho1
+Fi1i     FibPho1
+Fi1r     FibPho1
+Fi2i     FibPho2
+Fi2r     FibPho2
+Tick     RZn(1)
+TIG/     RZn(1)
+
