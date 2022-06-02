@@ -8,9 +8,9 @@ block_path = r'/mnt/c/Users/scsc7/Documents/Github/tdt_to_nwb/test'
 
 #fns
 data = read_block(block_path)
-print(data)
-print(data.info)
-print(data.streams)
+print("\ndata:\n" + str(data))
+print("\ninfo:\n"+ str(data.info))
+print("\nstreams:\n"+ str(data.streams))
 data.streams._405A.fs # dot syntax
 
 # Explore Stream events
