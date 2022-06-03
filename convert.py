@@ -1,19 +1,41 @@
 from tdt import read_block, read_sev, epoc_filter
-from pynwb import NWBHDF5IO
 import numpy as np
 import matplotlib.pyplot as plt
+
+from qtpy.QtWidgets import QFileDialog, QApplication
+from os import getcwd, path, listdir
+import sys
+from datetime import datetime
+from dateutil.tz import tzlocal
+import numpy as np
+import re
+
+from pynwb import NWBFile, NWBHDF5IO, ProcessingModule, file
+from pynwb.ecephys import ElectricalSeries, FilteredEphys, SpikeEventSeries, EventWaveform
+from pynwb.behavior import BehavioralTimeSeries, EyeTracking, PupilTracking
+from pynwb.misc import AbstractFeatureSeries
 
 # global variables! change these as needed.
 data_block = r'/mnt/c/Users/scsc7/Documents/Github/tdt_to_nwb/test'
 nwb_name = 'test.nwb'
 
-def new_nwb():
-    # nwb_io = []
-    # nwb_io = NWBHDF5IO(nwb_file_name, mode='w')
-    # nwbfile = nwb_io.read()
-    # print(nwbfile)
-    print("\nwriting to NWB file %s\n" % (nwb_name))
-
+def new_nwb(tdt_data):
+    nwb_io = []
+    nwb_io = NWBHDF5IO(nwb_name, mode='w')
+    nwb_file = NWBFile(session_description ="place holder",
+                        identifier = "place holder",
+                        subject = None,
+                        session_id ="place holder",
+                        session_start_time=tdt_data.info.start_date,
+                        file_create_date=datetime.now(tzlocal()),
+                        experimenter="placeholder",
+                        lab="placeholder",
+                        institution="placeholder",
+                        source_script='convert.py',
+                        source_script_file_name='convert.py',
+                        notes="")
+    nwb_io.write(nwb_file)
+    nwb_io.close()
 
 # converts tdt files to nwb file
 # params: string block_path is path to tdt folder
@@ -23,15 +45,14 @@ def convert():
     print("\ndata:\n" + str(data))
     print("\ninfo:\n"+ str(data.info))
     print ('\nall stream stores: \n' + str(data.streams))
-    new_nwb()
+    new_nwb(data)
     print('\nChannel data in', data.info.blockname)
-    for store in data.streams.keys():
-        print(store, data.streams[store])
+    for channel in data.streams.keys():
+        print(channel, data.streams[channel])
     # print(store, data.streams[store].data[:])
     print('\nSampling rates in', data.info.blockname)
     for store in data.streams.keys():
         print(store, '{:.4f} Hz'.format(data.streams[store].fs))
-
 convert()
 
 # def convert(block_path):
