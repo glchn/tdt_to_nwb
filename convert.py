@@ -16,7 +16,6 @@ from pynwb.ecephys import ElectricalSeries, FilteredEphys, SpikeEventSeries, Eve
 from pynwb.behavior import BehavioralTimeSeries, EyeTracking, PupilTracking
 from pynwb.misc import AbstractFeatureSeries
 
-# global variables! change these as needed.
 data_block = r'/mnt/c/Users/scsc7/Documents/Github/tdt_to_nwb/test'
 nwb_name = 'test.nwb'
 
