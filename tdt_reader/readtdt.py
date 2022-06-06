@@ -4,15 +4,14 @@ import numpy as np  # fundamental package for scientific computing, handles arra
 # import the primary functions from the tdt library only
 from tdt import read_block
 
-# TODO: Why is script not terminating?
+# TODO: Why is script not terminating? fi1r and fi2r
 
-#variables
 block_path = r'/mnt/c/Users/scsc7/Documents/Github/tdt_to_nwb/test'
 
 def plot_streams(block_path):
     data = read_block(block_path)
 
-    print ('\nall stream stores: \n' + str(data.streams))
+    print ('\nall stream stores: \n' + str(data.streams)) # debugging print statements
     print('\nChannel data in', data.info.blockname)
     for channel in data.streams.keys():
         print(channel, data.streams[channel])
@@ -24,15 +23,10 @@ def plot_streams(block_path):
         time = np.linspace(1, num_points, num_points) / data.streams[store].fs
         t = int(num_points * data.streams[store].fs) # int rounds it to the nearest integer
         fig1 = plt.subplots(figsize=(10, 6)) # declare figure size
-        channel = 2
         plt.plot(time[0:t], data.streams[store].data[0:t], color='cornflowerblue') # plot the line using slices
         plt.title(str([store]) + " Data", fontsize=16) # create title, axis labels, and legend
         plt.xlabel('Seconds', fontsize=14)
         plt.ylabel('Volts', fontsize=14)
-        plt.legend(('Channel {}'.format(channel),),
-            loc='lower right', 
-            bbox_to_anchor=(1.0,1.01)
-            )
         plt.autoscale(tight=True)
         plt.savefig("readtdt" + str([store]) + ".jpg")
         print("done iteration" + str([store]) + "\n") # print statement for debugging. getting stuck on Fi2r and Fi1r
