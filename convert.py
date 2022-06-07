@@ -20,11 +20,12 @@ def testplot(nwb_in, store):
     time = np.linspace(1, num_points, num_points) / nwb_sampling_rate
     t = int(num_points * nwb_sampling_rate) # int rounds it to the nearest integer
     plt.plot(time[0:t], store_timeseries_entry.data[0:t], color='cornflowerblue') # plot the line using slices
-    plt.title(str([store]) + " Data", fontsize=16) # create title, axis labels
+    plt.title("NWB " + str([store]) + " Data", fontsize=16) # create title, axis labels
     plt.xlabel('Seconds', fontsize=14)
     plt.ylabel('Volts', fontsize=14)
     plt.autoscale(tight=True)
     plt.savefig("nwb" + str([store]) + ".jpg")
+    plt.close()
     print("done plotting iteration" + str([store]) + "\n") # debug statement
 
 # use to check if nwb file was correctly written. prints acquisition info and timeseries data. plots data.

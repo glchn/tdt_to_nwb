@@ -21,11 +21,11 @@ def plot_streams(block_path):
         t = int(num_points * data.streams[store].fs) # int rounds it to the nearest integer
         fig1 = plt.subplots(figsize=(10, 6)) # declare figure size
         plt.plot(time[0:t], data.streams[store].data[0:t], color='cornflowerblue') # plot the line using slices
-        plt.title(str([store]) + " Data", fontsize=16) # create title, axis labels
+        plt.title("TDT " + str([store]) + " Data", fontsize=16) # create title, axis labels
         plt.xlabel('Seconds', fontsize=14)
         plt.ylabel('Volts', fontsize=14)
         plt.autoscale(tight=True)
-        plt.savefig("readtdt" + str([store]) + ".jpg")
+        plt.savefig("tdt" + str([store]) + ".jpg")
         print("done iteration" + str([store]) + "\n") # print statement for debugging. getting stuck on Fi2r and Fi1r
         #TODO: stuck on Fi2r and Fi1r... why?
 
